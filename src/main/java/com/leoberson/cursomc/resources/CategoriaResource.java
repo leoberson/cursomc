@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.leoberson.cursomc.domain.Categoria;
+import com.leoberson.cursomc.dto.CategoriaDTO;
 import com.leoberson.cursomc.services.CategoriaService;
+import java.util.List;
+import java.util.stream.Collectors;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @RestController
 @RequestMapping(value = "/categorias")
@@ -49,5 +53,16 @@ public class CategoriaResource {
             service.delete(id);
             return ResponseEntity.noContent().build();
         }
+        
+        @RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<CategoriaDTO>> findAll() {
+		
+		List<Categoria> list = service.findAll();
+                List<CategoriaDTO> listDTO = 
+                        list.stream().map(obj -> new CategoriaDTO(obj))
+                                .collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
+		
+	}
 
 }
