@@ -9,6 +9,7 @@ import com.leoberson.cursomc.domain.Categoria;
 import com.leoberson.cursomc.repositories.CategoriaRepository;
 import com.leoberson.cursomc.services.exceptions.DataIntegrityException;
 import com.leoberson.cursomc.services.exceptions.ObjectNotFoundException;
+import java.util.List;
 import org.springframework.dao.DataIntegrityViolationException;
 
 @Service
@@ -39,6 +40,10 @@ public class CategoriaService {
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
         }
+    }
+    
+    public List<Categoria> findAll(){
+        return repo.findAll();
     }
 
 }
