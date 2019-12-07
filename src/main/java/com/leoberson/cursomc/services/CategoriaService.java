@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leoberson.cursomc.domain.Categoria;
+import com.leoberson.cursomc.dto.CategoriaDTO;
 import com.leoberson.cursomc.repositories.CategoriaRepository;
 import com.leoberson.cursomc.services.exceptions.DataIntegrityException;
 import com.leoberson.cursomc.services.exceptions.ObjectNotFoundException;
@@ -54,6 +55,10 @@ public class CategoriaService {
        PageRequest pageRequest = PageRequest.of(page, linesPerPage, 
                Sort.Direction.valueOf(direction), orderby);
        return repo.findAll(pageRequest);
+   }
+   
+   public Categoria fromDTO(CategoriaDTO objDto){
+       return new Categoria(objDto.getId(), objDto.getNome());
    }
 
 }
