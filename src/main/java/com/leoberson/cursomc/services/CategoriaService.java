@@ -11,6 +11,9 @@ import com.leoberson.cursomc.services.exceptions.DataIntegrityException;
 import com.leoberson.cursomc.services.exceptions.ObjectNotFoundException;
 import java.util.List;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 @Service
 public class CategoriaService {
@@ -45,5 +48,12 @@ public class CategoriaService {
     public List<Categoria> findAll(){
         return repo.findAll();
     }
+    
+   public Page<Categoria> findPage(Integer page, Integer linesPerPage, 
+           String orderby, String direction){
+       PageRequest pageRequest = PageRequest.of(page, linesPerPage, 
+               Sort.Direction.valueOf(direction), orderby);
+       return repo.findAll(pageRequest);
+   }
 
 }
