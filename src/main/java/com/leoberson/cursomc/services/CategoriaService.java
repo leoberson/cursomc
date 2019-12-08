@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leoberson.cursomc.domain.Categoria;
+import com.leoberson.cursomc.domain.Categoria;
 import com.leoberson.cursomc.dto.CategoriaDTO;
 import com.leoberson.cursomc.repositories.CategoriaRepository;
 import com.leoberson.cursomc.services.exceptions.DataIntegrityException;
@@ -33,8 +34,9 @@ public class CategoriaService {
     }
 
     public Categoria update(Categoria obj) {
-        find(obj.getId());
-        return repo.save(obj);
+        Categoria newObj = find(obj.getId());
+        updateData(newObj, obj);
+        return repo.save(newObj);
     }
 
     public void delete(Integer id) {
@@ -59,6 +61,10 @@ public class CategoriaService {
    
    public Categoria fromDTO(CategoriaDTO objDto){
        return new Categoria(objDto.getId(), objDto.getNome());
+   }
+   
+   private void updateData(Categoria newObj, Categoria obj){
+       newObj.setNome(obj.getNome());
    }
 
 }
