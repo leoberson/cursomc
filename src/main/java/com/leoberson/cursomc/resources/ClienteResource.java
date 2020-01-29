@@ -1,25 +1,26 @@
 package com.leoberson.cursomc.resources;
 
-import com.leoberson.cursomc.domain.Categoria;
+import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.leoberson.cursomc.domain.Cliente;
 import com.leoberson.cursomc.dto.ClienteDTO;
 import com.leoberson.cursomc.dto.ClienteNewDTO;
 import com.leoberson.cursomc.services.ClienteService;
-import java.net.URI;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.validation.Valid;
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(value = "/clientes")

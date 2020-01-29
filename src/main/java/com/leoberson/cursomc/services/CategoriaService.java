@@ -1,21 +1,20 @@
 package com.leoberson.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.leoberson.cursomc.domain.Categoria;
 import com.leoberson.cursomc.domain.Categoria;
 import com.leoberson.cursomc.dto.CategoriaDTO;
 import com.leoberson.cursomc.repositories.CategoriaRepository;
 import com.leoberson.cursomc.services.exceptions.DataIntegrityException;
 import com.leoberson.cursomc.services.exceptions.ObjectNotFoundException;
-import java.util.List;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
 @Service
 public class CategoriaService {
